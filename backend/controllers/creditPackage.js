@@ -17,7 +17,8 @@ class CreditPackageController {
   static async getAll (req, res, next) {
     try {
       const creditPackage = await dataSource.getRepository('CreditPackage').find({
-        select: ['id', 'name', 'credit_amount', 'price']
+        select: ['id', 'name', 'credit_amount', 'price'],
+        total: creditPackage.length
       })
       res.status(200).json({
         status: 'success',
